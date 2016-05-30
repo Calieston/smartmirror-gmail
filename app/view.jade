@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title=title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    section
+      header
+        h1='E-Mails'
+      if mails
+        each mail in mails
+          h3=mail.title
+          p=mail.from.name
+          p=mail.date
+          if mailData
+            h1=mailData.title
+            h2=mailData.from.name
+            h2=mailData.date
+      else
+        h2='Keine E-Mails vorhanden'

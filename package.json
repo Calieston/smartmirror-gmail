@@ -1,0 +1,33 @@
+{
+  "name": "smartmirror-mail",
+  "version": "1.0.0",
+  "description": "Mail module for smart mirror using google mail api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Calieston/smartmirror-mail.git"
+  },
+  "keywords": [
+    "smartmirror",
+    "mail",
+    "google mail api"
+  ],
+  "author": "Calieston Varatharajah",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "inbox": "^1.1.59",
+    "moment": "^2.13.0"
+  },
+  "homepage": "https://github.com/Calieston/weatherModule.git",
+  "smartmirror": {
+    "url": {
+      "type": "string",
+      "descr": "URL for fetching mails using google mail api"
+    }
+  }
+}
