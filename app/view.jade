@@ -9,12 +9,10 @@ html
         h1='E-Mails'
       if mails
         each mail in mails
-          h3=mail.title
-          p=mail.from.name
-          p=mail.date
-          if mailData
-            h1=mailData.title
-            h2=mailData.from.name
-            h2=mailData.date
+          h2=mail.subject
+          p=mail.text
+          p=mail.from['0'].name
+          p=mail.headers.date
       else
         h2='Keine E-Mails vorhanden'
+

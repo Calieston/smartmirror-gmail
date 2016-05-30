@@ -2,27 +2,22 @@
 
 var express = require('express');
 var app = express();
-
+var util = require('util');
 var controller = require('./app/controller');
 
-app.locals.moment = require('moment');
 
 app.set('views', __dirname);
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-  let user = '**********'
-  let clientId = '**********'
-  let clientSecret = '**********'
-  let refreshToken = '**********'
-  let accessToken = '**********'
+  let user = '*************'
+  let password = '***********'
+  let host = 'imap.gmail.com'
 
   controller.get({
       user: user,
-      clientId: clientId,
-      clientSecret: clientSecret,
-      refreshToken: refreshToken,
-      accessToken: accessToken,
+      password: password,
+      host: host
     })
     .then((mails) => {
       res.render('app/view.jade', {
