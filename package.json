@@ -1,5 +1,5 @@
 {
-  "name": "smartmirror-mail",
+  "name": "smartmirror-gmail",
   "version": "1.0.0",
   "description": "Mail module for smart mirror using google mail api",
   "main": "index.js",
@@ -25,9 +25,17 @@
   },
   "homepage": "https://github.com/Calieston/weatherModule.git",
   "smartmirror": {
-    "url": {
+    "user": {
       "type": "string",
-      "descr": "URL for fetching mails using google mail api"
+      "descr": "User mail address."
+    },
+    "password": {
+      "type": "string",
+      "descr": "Created safety password for gmail module."
+    },
+    "host": {
+      "type": "string",
+      "descr": "Mail host to establish IMAP connection"
     }
   }
 }

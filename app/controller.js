@@ -3,8 +3,6 @@ var Imap = require('imap'),
   util = require('util'),
   MailParser = require("mailparser").MailParser;
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 exports.get = function(params) {
   // Return new Promise
   return new Promise((resolve, reject) => {
@@ -19,6 +17,9 @@ exports.get = function(params) {
       host: host,
       port: 993,
       tls: true,
+      tlsOptions: {
+        rejectUnauthorized: false
+      },
       authTimeout: 3000
     });
 
@@ -43,9 +44,10 @@ exports.get = function(params) {
     imap.once('ready', execute);
 
     function execute() {
+      console.log('connected');
       openInbox(function(err, box) {
         if (err) throw err;
-        imap.search(['UNSEEN', ['SINCE', 'May 29, 2016']], function(err, results) {
+        imap.search(['UNSEEN', ['SINCE', 'May 27, 2016']], function(err, results) {
           if (err) throw err;
           var f = imap.fetch(results, {
             bodies: ["HEADER.FIELDS (FROM SUBJECT)", ""]
@@ -67,9 +69,8 @@ exports.get = function(params) {
     // parse mail body with mail parser
     function processMessage(msg, seqno) {
       var parser = new MailParser();
-      /*      parser.on("headers", function(headers) {});*/
       parser.on("end", function(msg) {
-        // add parsed mail into mail array
+        // push parsed mail into mail array
         mailData.push(msg);
       });
 

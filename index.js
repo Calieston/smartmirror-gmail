@@ -10,8 +10,8 @@ app.set('views', __dirname);
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-  let user = '*************'
-  let password = '***********'
+  let user = '******************'
+  let password = '******************'
   let host = 'imap.gmail.com'
 
   controller.get({
