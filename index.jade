@@ -1,0 +1,81 @@
+doctype html
+html
+  head
+    title Smartmirror - Module
+    style.
+      body {
+        background: rgba(120,120,120,1);
+        color: white;
+        margin: 0;
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      main {
+        position: absolute;
+        width: 1920px;
+        height: 1080px;
+        background-color: rgba(0,0,0,1);
+        position: relative;
+        transform-origin: top left;
+      }
+
+      a {
+        color: inherit; }
+
+      section[class^='size-'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        box-sizing: border-box;
+        border: 1px solid white;
+        padding: 10px;
+        background-color: black;
+      }
+
+      .size-2-2{
+        height: calc(100%/9*2);
+        width: calc(100%/16*2);
+      }
+
+      .size-4x2 {
+        height: calc(100%/9*2);
+        width: calc(100%/16*4);
+      }
+
+      .size-4x4 {
+        height: calc(100%/9*4);
+        width: calc(100%/16*4);
+      }
+
+  body
+
+
+    main.grid
+
+      section(id="widget-#{widget._id}" class="size-#{widget.size}" data-widget="#{widget.id}" data-x=0 data-y=0).widget
+        div
+          include ./app/view.jade
+
+    script.
+
+      document.addEventListener('DOMContentLoaded', scale);
+      window.addEventListener('resize', scale);
+      function scale() {
+
+        mainEl = document.querySelector('.grid');
+
+        scale = Math.min(
+          (window.innerHeight - 40) / 1080,
+          (window.innerWidth - 40) / 1920
+        );
+
+        mainEl.style.transform = 'scale(' + scale  + ')';
+
+      }
+
+
+

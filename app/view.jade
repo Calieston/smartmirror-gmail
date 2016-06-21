@@ -1,18 +1,8 @@
-doctype html
-html
-  head
-    title=title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    section
-      header
-        h1='E-Mails'
-      if mails
-        each mail in mails
-          h2=mail.subject
-          p=mail.text
-          p=mail.from['0'].name
-          p=mail.headers.date
-      else
-        h2='Keine E-Mails vorhanden'
+if data
+  each mail in data
+    h2=mail.subject
+    p=mail.from['0'].name
+    p=mail.headers.date
+else
+  h2='Keine E-Mails vorhanden'
 

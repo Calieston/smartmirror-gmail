@@ -17,7 +17,7 @@
   ],
   "author": "Calieston Varatharajah",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "mailparser": "^0.5.3 ",
@@ -25,17 +25,20 @@
   },
   "homepage": "https://github.com/Calieston/weatherModule.git",
   "smartmirror": {
-    "user": {
-      "type": "string",
-      "descr": "User mail address."
+    "settings": {
+      "user": {
+        "type": "string",
+        "descr": "User mail address."
+      },
+      "password": {
+        "type": "string",
+        "descr": "Created safety password for gmail module."
+      },
+      "host": {
+        "type": "string",
+        "descr": "Mail host to establish IMAP connection"
+      }
     },
-    "password": {
-      "type": "string",
-      "descr": "Created safety password for gmail module."
-    },
-    "host": {
-      "type": "string",
-      "descr": "Mail host to establish IMAP connection"
-    }
+    "size": ["4x2"]
   }
 }
