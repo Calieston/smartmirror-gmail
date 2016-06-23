@@ -28,17 +28,17 @@
     "settings": {
       "user": {
         "type": "string",
-        "descr": "User mail address."
+        "desc": "User mail address."
       },
       "password": {
         "type": "string",
-        "descr": "Created safety password for gmail module."
+        "desc": "Created safety password for gmail module."
       },
       "host": {
         "type": "string",
-        "descr": "Mail host to establish IMAP connection"
+        "desc": "Mail host to establish IMAP connection"
       }
     },
-    "size": ["4x2"]
+    "size": ["4x4"]
   }
 }
