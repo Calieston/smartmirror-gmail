@@ -8,7 +8,7 @@ exports.get = function(params) {
   return new Promise((resolve, reject) => {
     let user = params.user
     let password = params.password
-    let host = params.host
+    let host = 'imap.gmail.com'
     const mailData = []
 
     var imap = new Imap({

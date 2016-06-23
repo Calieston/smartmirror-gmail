@@ -26,17 +26,13 @@
   "homepage": "https://github.com/Calieston/weatherModule.git",
   "smartmirror": {
     "settings": {
-      "user": {
-        "type": "string",
-        "desc": "User mail address."
-      },
       "password": {
         "type": "string",
         "desc": "Created safety password for gmail module."
       },
-      "host": {
+      "user": {
         "type": "string",
-        "desc": "Mail host to establish IMAP connection"
+        "desc": "User mail address."
       }
     },
     "size": ["4x4"]

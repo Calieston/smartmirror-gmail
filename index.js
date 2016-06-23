@@ -10,9 +10,8 @@ app.set('views', __dirname);
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-  let user = '*****'
-  let password = '*****'
-  let host = 'imap.gmail.com'
+  let user = '******'
+  let password = '******'
   let pckg = fs.readFileSync('package.json');
   pckg = JSON.parse(pckg);
 
@@ -23,7 +22,6 @@ app.get('/', function(req, res) {
   controller.get({
       user: user,
       password: password,
-      host: host
     })
     .then((data) => {
       res.render('./index.jade', {
