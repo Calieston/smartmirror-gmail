@@ -17,11 +17,13 @@
   ],
   "author": "Calieston Varatharajah",
   "license": "MIT",
-  "devDependencies": {
-    "express": "^4.13.4",
-    "jade": "^1.11.0",
+  "dependencies": {
     "mailparser": "^0.5.3 ",
     "imap": "^0.8.17"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
   },
   "homepage": "https://github.com/Calieston/weatherModule.git",
   "smartmirror": {
