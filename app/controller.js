@@ -47,7 +47,7 @@ exports.get = function(params) {
       console.log('connected');
       openInbox(function(err, box) {
         if (err) throw err;
-        imap.search(['UNSEEN', ['SINCE', 'May 27, 2016']], function(err, results) {
+        imap.search(['UNSEEN', ], function(err, results) {
           if (err) throw err;
           var f = imap.fetch(results, {
             bodies: ["HEADER.FIELDS (FROM SUBJECT)", ""]
@@ -71,6 +71,9 @@ exports.get = function(params) {
       var parser = new MailParser();
       parser.on("end", function(msg) {
         // push parsed mail into mail array
+        var date = new Date(msg.headers.date);
+        var dateString = date.toLocaleDateString();
+        msg.headers.date = dateString;
         mailData.push(msg);
       });
 
