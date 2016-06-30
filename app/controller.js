@@ -38,33 +38,37 @@ exports.get = function(params) {
     // handle disconnect event
     imap.once('end', function() {
       console.log('Connection ended');
+      resolve(mailData);
     });
 
     // call execute function after established connection
-    imap.once('ready', execute);
-
-    function execute() {
-      console.log('connected');
-      openInbox(function(err, box) {
+    imap.once('ready', () => {
+      console.log('imap connected');
+      openInbox((err, box) => {
         if (err) throw err;
-        imap.search(['UNSEEN', ], function(err, results) {
+
+        imap.search(['UNSEEN', ], (err, results) => {
           if (err) throw err;
+
           var f = imap.fetch(results, {
             bodies: ["HEADER.FIELDS (FROM SUBJECT)", ""]
           });
           if (err) throw err;
 
           f.on("message", processMessage);
+
           f.once('error', function(err) {
             console.log('Fetch error: ' + err);
           });
+
           f.once('end', function() {
-            // return mail array
-            resolve(mailData);
+            imap.end();
           });
+
         });
+
       });
-    };
+    });
 
     // parse mail body with mail parser
     function processMessage(msg, seqno) {
@@ -88,5 +92,4 @@ exports.get = function(params) {
       });
     }
   });
-
 };
