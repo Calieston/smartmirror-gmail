@@ -71,9 +71,10 @@ exports.get = function(params) {
       var parser = new MailParser();
       parser.on("end", function(msg) {
         // push parsed mail into mail array
-        var date = new Date(msg.headers.date);
-        var dateString = date.toLocaleDateString();
-        msg.headers.date = dateString;
+        var d = new Date(msg.headers.date);
+        var datestring = d.getDate() + '.' + (d.getMonth()+1) + '.' + d.getFullYear();
+        datestring += ', ' + d.getHours() + ':' + d.getMinutes();
+        msg.headers.date = datestring;
         mailData.push(msg);
       });
 
