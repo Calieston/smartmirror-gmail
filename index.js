@@ -18,6 +18,8 @@ app.get('/', function(req, res) {
   let widget = {};
   widget._id = '1234567890';
   widget.size = pckg.smartmirror.size[0];
+  widget.settings = {};
+  widget.settings.timer = 5;
 
   controller.get({
       user: user,

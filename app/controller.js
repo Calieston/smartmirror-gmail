@@ -38,7 +38,7 @@ exports.get = function(params) {
     // handle disconnect event
     imap.once('end', function() {
       console.log('Connection ended');
-      resolve(mailData);
+      resolve(mailData.reverse());
     });
 
     // call execute function after established connection
@@ -49,7 +49,6 @@ exports.get = function(params) {
 
         imap.search(['UNSEEN', ], (err, results) => {
           if (err) throw err;
-
           var f = imap.fetch(results, {
             bodies: ["HEADER.FIELDS (FROM SUBJECT)", ""]
           });
@@ -76,7 +75,7 @@ exports.get = function(params) {
       parser.on("end", function(msg) {
         // push parsed mail into mail array
         var d = new Date(msg.headers.date);
-        var datestring = d.getDate() + '.' + (d.getMonth()+1) + '.' + d.getFullYear();
+        var datestring = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
         datestring += ', ' + d.getHours() + ':' + d.getMinutes();
         msg.headers.date = datestring;
         mailData.push(msg);
