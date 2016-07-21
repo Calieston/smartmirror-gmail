@@ -28,10 +28,6 @@
   "homepage": "https://github.com/Calieston/weatherModule.git",
   "smartmirror": {
     "settings": {
-      "timer": {
-        "type": "number",
-        "desc": "Timer"
-      },
       "password": {
         "type": "string",
         "desc": "Created safety password for gmail module."

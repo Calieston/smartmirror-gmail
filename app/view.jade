@@ -40,19 +40,3 @@ ul.list-unstyled
   else
     li
       h2='Keine E-Mails vorhanden'
-
-script.
-  var moduleEl = document.getElementById('widget-#{widget._id}'),
-      wrapperEl = moduleEl.querySelector('ul'),
-      incidentsEls = moduleEl.querySelectorAll('li');
-
-  var timer = 1000 * #{widget.settings.timer} || 1000*15;
-  var index#{widget._id} = 1;
-
-  setInterval(function(){
-    if(index#{widget._id} == incidentsEls.length) {
-      index#{widget._id} = 0;
-    }
-    wrapperEl.style.transform = 'translateY(-' + incidentsEls[index#{widget._id}].offsetTop + 'px)';
-    index#{widget._id}++;
-  }, timer);
