@@ -37,6 +37,7 @@
         "desc": "User mail address."
       }
     },
-    "size": ["4x4"]
+    "size": ["4x4"],
+    "gestureSupport": false
   }
 }
