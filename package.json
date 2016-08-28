@@ -38,6 +38,6 @@
       }
     },
     "size": ["4x4"],
-    "gestureSupport": false
+    "gestureSupport": true
   }
 }
