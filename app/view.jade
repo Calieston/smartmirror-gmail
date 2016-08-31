@@ -1,18 +1,5 @@
 style(type='text/css').
 
-  #widget-#{widget._id} li:first-child {
-    margin-bottom: 60px;
-  }
-
-  #widget-#{widget._id} li:first-child h3 {
-    font-size: 3em;
-  }
-
-  #widget-#{widget._id} li:first-child h4 {
-    font-size: 1.2em;
-    color: rgb(150,150,150);
-  }
-
   #widget-#{widget._id} li {
     margin-bottom: 40px;
   }
@@ -33,10 +20,31 @@ svg(xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 5
 ul.list-unstyled
   if data
     each mail in data
-      li
+      article
         h3=mail.subject
         h4 von #{mail.from['0'].name}
         h4 am #{mail.headers.date}
   else
     li
       h2='Keine E-Mails vorhanden'
+
+
+
+script.
+  var module = document.getElementById('widget-#{widget._id}'),
+      wrapper = module.querySelector('div'),
+      articles = module.querySelectorAll('article');
+  var index = 1;
+
+  function next() {
+      if(index == articles.length) {
+      index = 0;
+    }
+    wrapper.style.transform = 'translateY(-' + articles[index].offsetTop + 'px)';
+    index++;
+  }
+
+  if ((#{widget.gestureSupport} == 'true') && (#{widget.gesture} == 'test'))
+    socket.on('#{widget.gesture.gestureType}', function(data) {
+      next();
+    });
